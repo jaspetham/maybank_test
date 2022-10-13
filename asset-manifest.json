@@ -1,0 +1,18 @@
+{
+  "files": {
+    "main.css": "/maybank_test/static/css/main.19e45d03.css",
+    "main.js": "/maybank_test/static/js/main.b497630c.js",
+    "static/js/787.25ecf61b.chunk.js": "/maybank_test/static/js/787.25ecf61b.chunk.js",
+    "static/media/map.png": "/maybank_test/static/media/map.f6d16e25ce2384dfa808.png",
+    "static/media/bg.jpg": "/maybank_test/static/media/bg.3291db2636b1db5a43aa.jpg",
+    "static/media/logo.svg": "/maybank_test/static/media/logo.9ba7a937640a9ecb3775f509f155f3f1.svg",
+    "index.html": "/maybank_test/index.html",
+    "main.19e45d03.css.map": "/maybank_test/static/css/main.19e45d03.css.map",
+    "main.b497630c.js.map": "/maybank_test/static/js/main.b497630c.js.map",
+    "787.25ecf61b.chunk.js.map": "/maybank_test/static/js/787.25ecf61b.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.19e45d03.css",
+    "static/js/main.b497630c.js"
+  ]
+}
