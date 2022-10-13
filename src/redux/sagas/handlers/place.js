@@ -8,6 +8,6 @@ export function* handleGetPlace(action){
         const { data } = response;
         yield put(setPlace(data));
     }catch (error){
-        console.log(error)
+        return;
     }
 }

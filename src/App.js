@@ -23,13 +23,26 @@ function App() {
     <div className="App">
       <h1>Search result: {search}</h1>
       <SearchComponent handleSubmit={handleSubmit}/>
-      {places && 
-        <div> 
+      {/* {places && 
+        <div>
           {places.features.map((final)=>{
             return(
               <PlaceComponent key={final.properties.id} {...final.properties}/>
             );
           })}
+        </div>
+      } */}
+      {places != '' && search != '' ? 
+        <div className="result-wrapper p-5">
+          {places.features.map((final)=>{
+            return(
+              <PlaceComponent key={final.properties.id} {...final.properties}/>
+            );
+          })}
+        </div>
+        :
+        <div className="empty p-5">
+          No Result found..
         </div>
       }
     </div>
