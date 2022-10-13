@@ -24,7 +24,7 @@ const PlaceComponent =  (props) =>{
     } = props;
 
     return(
-        <div>
+        <div className="mb-5">
             <h1>Source ID : {source_id}</h1>
             <h1>Country Name : {name}</h1>
             <h1>Continent : {continent}</h1>

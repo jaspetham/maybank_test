@@ -1,4 +1,5 @@
 const SEARCH = "search";
+const SEARCH_OPTIONS = "search_options";
 
 export const search = (search) =>({
     type: SEARCH,

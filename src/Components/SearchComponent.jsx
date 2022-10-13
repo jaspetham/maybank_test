@@ -1,51 +1,45 @@
 import React, { useEffect, useState } from "react";
 import Form from 'react-bootstrap/Form';
+import Select from 'react-select'
+import './SearchComponent.css';
 import { useDispatch, useSelector } from "react-redux";
 import {search} from "../redux/ducks/search";
-import './SearchComponent.css';
-import Select from 'react-select'
 
 const SearchComponent =  (props) =>{
     const [query, setQuery] = useState("");
 
-    const {handleSubmit} = props;
+    const {handleSubmit,options} = props;
 
     const dispatch = useDispatch();
-
-    const places = useSelector(state => state.place.place);
-    
-    let placeData = [];
-    let options = [];
+    const searchResult = useSelector((state) => state.search.search);
 
     useEffect(() => {
-        const timeOutId = setTimeout(() => dispatch(search(query)), 500);
-        if(places){
-            placeData = places.features
-                .map(place =>{
-                    return place.properties
-                })
-        }
-        placeData.map((data) => {
-            options.push({
-                value: data.name,
-                label: data.name
-            })
-        })
-        return () => clearTimeout(timeOutId);
-    },[query,placeData])
-    
+        const timeOutId = setTimeout(() => {
+            dispatch(search(query));
+        },500);
 
+        return () => {
+            clearTimeout(timeOutId);
+        };
+    },[query])
+
+    const handleOnInputChange = (event) =>{
+        if(event != ''){
+            setQuery(event);
+        }
+    }
     const handleOnChange = (event) =>{
-        setQuery(event);
+        setQuery(event.label);
     }
     return(
-        <Form onSubmit={handleSubmit}>
-           <Form.Group className="mb-3">
-                <Form.Label>Enter Address:</Form.Label>
-                {/* <Form.Control onChange={event => setQuery(event.target.value)} type="text" placeholder="Malaysia" /> */}
-                <Select onInputChange={handleOnChange} options={options}/>
-            </Form.Group> 
-        </Form>
+        <div className="search-wrapper">
+            <Form onSubmit={handleSubmit}>
+               <Form.Group className="mb-3">
+                    <Select onChange={handleOnChange} onInputChange={handleOnInputChange} options={options} placeholder={'Enter Address'}/>
+                </Form.Group>
+            </Form>
+            <p>Search Result : {searchResult}</p>
+        </div>
     )
 }
 
