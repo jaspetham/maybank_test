@@ -25,6 +25,7 @@ const PlaceComponent =  (props) =>{
 
     return(
         <div>
+            <h1>Source ID : {source_id}</h1>
             <h1>Country Name : {name}</h1>
             <h1>Continent : {continent}</h1>
             <h1>Country : {country}</h1>
