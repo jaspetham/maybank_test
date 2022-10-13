@@ -1,10 +1,108 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import '~antd/dist/antd.css';
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Mono&family=Rubik:wght@300;400&display=swap');
+
+:root {
+  --hsl-main: 43, 19%, 60%;
+  --clr-main: #aca186;
+  --ff-primary: 'Rubik', sans-serif;
+  --ff-secondary: 'Noto Sans Mono', monospace;
+
+  /* font-sizes */
+    --fs-900: clamp(5rem, 8vw + 1rem, 9.375rem);
+    --fs-800: 3.5rem;
+    --fs-700: 1.5rem;
+    --fs-600: 1.25rem;
+    --fs-500: 1rem;
+    --fs-400: 0.9375rem;
+    --fs-300: 1rem;
+    --fs-200: 0.875rem;
+}
+
+/* tablet size */
+@media (min-width: 35em) {
+  :root {
+    --fs-800: 5rem;
+    --fs-700: 2.5rem;
+    --fs-600: 1.5rem;
+    --fs-500: 1.15rem;
+    --fs-400: 1rem;
+  }
+}
+
+/* laptop size */
+@media (min-width: 45em) {
+  :root {
+    --fs-800: 6.25rem;
+    --fs-700: 3.5rem;
+    --fs-600: 2rem;
+    --fs-500: 1.5rem;
+    --fs-400: 1.125rem;
+  }
+}
+
+h1,h2,h3,h4,h5,h6{
+  font-family: var(--ff-secondary);
+  font-size:var(--fs-600);
+  font-weight: bold;
+  line-height: 1.5em;
+  margin-bottom:0!important;
+}
+p{
+  margin-bottom:0!important;
+}
+
+.clr-main{
+  color:var(--ff-primary)
+}
+.clr-secondary{
+  color:var(--ff-secondary)
+}
+
+.fs-900 {
+  font-size: var(--fs-900);
+}
+
+.fs-800 {
+  font-size: var(--fs-800);
+}
+
+.fs-700 {
+  font-size: var(--fs-700);
+}
+
+.fs-600 {
+  font-size: var(--fs-600);
+}
+
+.fs-500 {
+  font-size: var(--fs-500);
+}
+
+.fs-400 {
+  font-size: var(--fs-400);
+}
+
+.fs-300 {
+  font-size: var(--fs-300);
+}
+
+.fs-200 {
+  font-size: var(--fs-200);
+}
+
+.grid-span-2{
+  grid-column: span 2;
+}
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  color: hsla(var(--clr-main), 1);
+  font-family: var(--ff-primary);
 }
 
 #left-part {
@@ -12,11 +110,11 @@ body {
   z-index: 10;
   top: 0;
   left: 0;
-  display: table;
   width: 50%;
   height: 100%;
-  table-layout: fixed;
-  background: transparent;
+  background: url(./assets/bg.jpg) center center;
+  background-size: cover;
+  padding: 8rem clamp(30px, 30vh, 50px);
 }
 
 #fullpage {
@@ -25,4 +123,84 @@ body {
   z-index: 5;
   height: 100%;
   position: relative;
+  padding: 3rem clamp(30px, 30vh, 50px);
+}
+
+#left-part .brand-logo {
+  position: relative;
+  z-index:10;
+  max-width: 10rem;
+  margin: 0;
+  cursor: pointer;
+  align-self: flex-start;
+}
+
+#left-part .content-inside {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  row-gap:2rem;
+}
+
+#left-part .main-img{
+  display:block;
+  width:100%;
+  height:100%;
+  object-fit: cover;
+}
+
+#left-part::before{
+  content:'';
+  position: absolute;
+  left:0;
+  top:0;
+  width:100%;
+  height:100%;
+  background:rgba(0,0,0,.5);
+}
+
+.ant-form-item{
+  font-size:var(--fs-500);
+}
+
+.ant-collapse>.ant-collapse-item>.ant-collapse-header{
+  align-items: center!important;
+}
+
+.ant-collapse, .ant-collapse-content, .ant-collapse>.ant-collapse-item{
+  border:0;
+  background-color: white;
+}
+
+.ant-collapse>.ant-collapse-item>.ant-collapse-header .ant-collapse-header-text{
+  font-size:var(--fs-500);
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+.anticon{
+  font-size: var(--fs-500);
+}
+
+@media only screen and (max-width: 480px){
+  #left-part {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    min-height: 100vh;
+    padding: 1.5rem;
+  }
+  #fullpage {
+    position: relative;
+    left:0;
+    top:0;
+    width: 100%;
+    padding:1.5rem;
+  }
+  .fix-bug{
+    grid-column: span 2;
+  }
 }
